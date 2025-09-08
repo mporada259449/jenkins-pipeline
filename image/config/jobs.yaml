@@ -1,0 +1,18 @@
+jobs:
+  - script: >
+      folder('seed-jobs') {
+        description('Folder contains seed jobs that are triggered on start up')
+        displayName('Seed Job')
+      }
+  - script: >
+      freeStyleJob('Create-CI'){
+        scm{
+          git{
+            remote{
+              name('master')
+              url('git@github.com:mporada259449/jenkins-pipeline.git')
+            }
+            
+          }
+        }
+      }
