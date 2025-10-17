@@ -6,20 +6,25 @@ jobs:
       }
   - script: >
       freeStyleJob('Create-CI'){
+        wrappers{
+          sshAgent('git-ssh-key')
+        }
         scm{
-          git{
-            remote{
-              name('dev/seeds')
+          git {
+            remote {
+              name('origin')
               url('git@github.com:mporada259449/jenkins-pipeline.git')
+              credentials('git-ssh-key')
             }
+            branch('dev/seeds')
           }
-          steps{
-            dsl{
-              external('pipelines/*')
-            }
+        }
+        steps{
+          dsl{
+            external('pipelines/*')
           }
-          publishers{
+        }
+        publishers{
             wsCleanup()
-          }
         }
       }
