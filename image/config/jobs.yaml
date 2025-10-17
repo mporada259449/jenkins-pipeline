@@ -9,10 +9,17 @@ jobs:
         scm{
           git{
             remote{
-              name('master')
+              name('dev/seeds')
               url('git@github.com:mporada259449/jenkins-pipeline.git')
             }
-            
+          }
+          steps{
+            dsl{
+              external('pipelines/*')
+            }
+          }
+          publishers{
+            wsCleanup()
           }
         }
       }
