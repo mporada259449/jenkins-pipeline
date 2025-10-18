@@ -1,6 +1,18 @@
-freeStyleJob('example') {
-    logRotator(-1, 10)
-    steps {
-        println "Inside job"
+pipelineJob('example') {
+    definition {
+        cps {
+            script('''
+                pipeline {
+                    agent any
+                    stages {
+                        stage('Print') {
+                            steps {
+                                echo 'Inside job'
+                            }
+                        }
+                    }
+                }
+            ''')
+        }
     }
 }
