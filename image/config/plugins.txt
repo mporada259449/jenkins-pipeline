@@ -1,7 +1,8 @@
-git:5.7.0
+git:5.8.0
 docker-plugin:1274.vc0203fdf2e74
 blueocean:1.27.21
 hashicorp-vault-plugin:371.v884a_4dd60fb_6
-configuration-as-code:1985.vdda_32d0c4ea_b_
+configuration-as-code:1998.v3e50e6e9d9d3
 job-dsl:1.93
-credentials:1419.v2337d1ceceef
+credentials:1447.v4cb_b_539b_5321
+ssh-credentials:361.vb_f6760818e8c
