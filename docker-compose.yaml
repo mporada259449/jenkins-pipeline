@@ -1,0 +1,34 @@
+services:
+  vault:
+    image: hashicorp/vault:latest
+    ports:
+      - "8200:8200"
+    env_file: 
+    - path: vault/vault.env
+      required: true
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - type: bind
+        source: ./vault/
+        target: /vault/external/
+      - type: bind
+        source: ./.ssh/
+        target: /data/.ssh/
+    command: ["/vault/external/entrypoint.sh"]
+  
+  jenkins:
+    build:
+      context: image/
+      tags: 
+        - my-jenkins:1.0
+    ports:
+     - "50000:50000"
+     - "8080:8080"
+
+    
+volumes:
+  vault-data:
+
+networks:
+  jenkins-network:
